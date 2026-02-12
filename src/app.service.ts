@@ -1,8 +1,17 @@
 import { Injectable } from '@nestjs/common';
+import { HelloResponseDto } from './dto/hello.dto';
 
 @Injectable()
 export class AppService {
-  getHello(): string {
-    return 'Hello,sir!';
+  hello(): string {
+    return 'Hello World';
+  }
+
+  helloName(name: string): HelloResponseDto {
+    const cleaned = name.trim();
+    return {
+      message: `Hello, ${cleaned}!`,
+      at: new Date().toISOString(),
+    };
   }
 }
